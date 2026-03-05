@@ -1,10 +1,14 @@
 # OnDemand SRE Labs
 
-Hands-on Site Reliability Engineering experiments using Kubernetes, Prometheus, Grafana and load testing.
+# OnDemand SRE Labs
 
-This repository demonstrates real-world reliability engineering practices including observability, load testing and autoscaling.
+Hands-on Site Reliability Engineering labs built with Kubernetes, Prometheus, Grafana, and k6.
+
+This repository demonstrates practical SRE concepts including observability, load testing, and horizontal pod autoscaling.
 
 ---
+## Architecture
+![Architecture](diagrams/reliability-lab-architecture.png)
 
 ## Technology Stack
 
@@ -30,7 +34,7 @@ kubectl apply -f k8s/demo-app.yaml
 kubectl get pods
 kubectl get svc
 ```
-## This demonstrates:
+### Key Concepts:
 
 - Kubernetes Deployment
 - Service exposure
@@ -40,13 +44,14 @@ kubectl get svc
 
 ### Monitor the Kubernetes workload using Prometheus and Grafana.
 
-## Metrics observed:
+### Metrics observed:
 
 - CPU usage
 - Memory usage
 - Pod metrics
 - Namespace utilization
-- Grafana dashboard provides real-time observability for the deployed application.
+
+Grafana dashboards provide real-time observability for the deployed application
 
 ## Lab 3 — Load Testing with k6
 
@@ -60,7 +65,7 @@ kubectl port-forward svc/demo-service 8080:80
 ```bash
 k6 run load-testing/k6-load-test.js
 ```
-This generates sustained traffic against the application and allows us to observe system behavior under load.
+This generates sustained traffic and allows observation of system behavior under load conditions.
 
 ## Lab 4 — Autoscaling under Load (HPA)
 
@@ -116,9 +121,10 @@ This lab shows practical SRE concepts:
 
 ## Author
 
-**Emrah Gokce Bayram**
+**Emrah Gokce Bayram**.
+
 Site Reliability Engineer / Cloud Infrastructure
 
-## Licence
+## License
 
 MIT
