@@ -93,7 +93,7 @@ This shows that Kubernetes automatically increased replicas to handle the load.
 ### HPA Output
 ![HPA Result](assets/hpa-output.png)
 
-Repository Structure
+# Repository Structure
 
 ```text
 ondemand-sre-labs
