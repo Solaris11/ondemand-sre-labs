@@ -30,29 +30,23 @@ Verify
 kubectl get pods
 kubectl get svc
 ```
-This demonstrates:
+## This demonstrates:
 
-Kubernetes Deployment
-
-Service exposure
-
-readiness probes
+- Kubernetes Deployment
+- Service exposure
+- Readiness probes
 
 ## Lab 2 — Observability (Prometheus + Grafana)
 
 Monitor the Kubernetes workload using Prometheus and Grafana.
 
-Metrics observed:
+## Metrics observed:
 
-CPU usage
-
-Memory usage
-
-Pod metrics
-
-Namespace utilization
-
-Grafana dashboard provides real-time observability for the deployed application.
+- CPU usage
+- Memory usage
+- Pod metrics
+- Namespace utilization
+- Grafana dashboard provides real-time observability for the deployed application.
 
 ## Lab 3 — Load Testing with k6
 
