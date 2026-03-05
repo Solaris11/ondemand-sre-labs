@@ -9,7 +9,7 @@ This repository demonstrates practical SRE concepts including observability, loa
 ---
 ## Architecture
 ![Architecture](diagrams/reliability-lab-architecture.png)
-
+```text
 User Traffic
      ↓
 k6 Load Generator
@@ -23,7 +23,7 @@ Metrics
 Prometheus → Grafana Dashboard
      ↓
 HPA scales pods based on CPU
-
+```
 ## Technology Stack
 
 - Kubernetes
