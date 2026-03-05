@@ -110,25 +110,21 @@ ondemand-sre-labs
 │
 └─ README.md
 ```
-What This Demonstrates
+## What This Demonstrates
 
 This lab shows practical SRE concepts:
 
-Kubernetes application deployment
+- Kubernetes application deployment
+- Observability with Prometheus and Grafana
+- Synthetic load generation
+- Horizontal Pod Autoscaling
+- System behavior under stress
 
-Observability with Prometheus and Grafana
+## Author
 
-Synthetic load generation
-
-Horizontal Pod Autoscaling
-
-System behavior under stress
-
-Author
-
-Emrah Gokce Bayram
+**Emrah Gokce Bayram**
 Site Reliability Engineer / Cloud Infrastructure
 
-Licence
+## Licence
 
 MIT
