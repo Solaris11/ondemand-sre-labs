@@ -38,7 +38,7 @@ Service exposure
 
 readiness probes
 
-Lab 2 — Observability (Prometheus + Grafana)
+# Lab 2 — Observability (Prometheus + Grafana)
 
 Monitor the Kubernetes workload using Prometheus and Grafana.
 
@@ -54,7 +54,7 @@ Namespace utilization
 
 Grafana dashboard provides real-time observability for the deployed application.
 
-Lab 3 — Load Testing with k6
+# Lab 3 — Load Testing with k6
 
 Generate traffic against the Kubernetes service.
 
@@ -68,7 +68,7 @@ k6 run load-testing/k6-load-test.js
 ```
 This generates sustained traffic against the application and allows us to observe system behavior under load.
 
-Lab 4 — Autoscaling under Load (HPA)
+# Lab 4 — Autoscaling under Load (HPA)
 
 Kubernetes automatically scales the application when CPU usage exceeds the defined threshold.
 
