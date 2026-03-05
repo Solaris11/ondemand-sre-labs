@@ -84,7 +84,7 @@ Expected outcome:
 * Service continues to respond (readinessProbe helps ensure traffic goes only to ready pods)
 
 Repository Structure
-
+```text
 ondemand-sre-labs
 │
 ├── diagrams
@@ -101,7 +101,7 @@ ondemand-sre-labs
 │
 ├── README.md
 └── .gitignore
-
+```
 Purpose
 
 This repository supports the OnDemand SRE consulting platform by providing reproducible reliability engineering labs and demos.
