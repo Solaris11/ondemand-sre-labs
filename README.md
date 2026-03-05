@@ -121,7 +121,7 @@ This lab shows practical SRE concepts:
 
 ## Author
 
-**Emrah Gokce Bayram**.
+**Emrah Gokce Bayram**
 
 Site Reliability Engineer / Cloud Infrastructure
 
