@@ -55,21 +55,33 @@ Lab Scenarios
 This lab demonstrates Kubernetes self-healing behavior.
 
 1. Deploy the demo service:
+
 kubectl apply -f k8s/demo-app.yaml
+
 2. Verify pods:
+
 kubectl get pods
+
 3. Simulate a failure (delete a pod):
+
 kubectl delete pod -l app=demo --field-selector=status.phase=Running
+
 Or delete a specific pod:
+
 kubectl get pods
 kubectl delete pod <pod-name>
+
 4. Watch the Deployment recreate the pod:
+
 kubectl get pods -w
 Expected outcome:
+
 * One pod is terminated
 * A new pod is created automatically to maintain replicas: 3
 * Service continues to respond (readinessProbe helps ensure traffic goes only to ready pods)
+
 Repository Structure
+
 ondemand-sre-labs
 │
 ├── diagrams
