@@ -9,6 +9,7 @@ This repository demonstrates practical SRE concepts including observability, loa
 ---
 ## Architecture
 ![Architecture](diagrams/reliability-lab-architecture.png)
+### Request Flow
 ````markdown
 User Traffic
    ↓
