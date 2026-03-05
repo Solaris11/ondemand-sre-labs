@@ -30,8 +30,7 @@ Components include:
 
 Example architecture:
 
-![Reliability Lab Architecture](../ondemand-sre-web/public/reliability-lab-architecture.png)
-
+![Reliability Lab Architecture](diagrams/reliability-lab-architecture.png)
 ---
 
 # Lab Scenarios
