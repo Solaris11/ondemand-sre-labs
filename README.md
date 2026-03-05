@@ -9,21 +9,21 @@ This repository demonstrates practical SRE concepts including observability, loa
 ---
 ## Architecture
 ![Architecture](diagrams/reliability-lab-architecture.png)
-```text
+````markdown
 User Traffic
-     ↓
+   ↓
 k6 Load Generator
-     ↓
+   ↓
 Kubernetes Service
-     ↓
+   ↓
 Pods (demo-app)
-     ↓
+   ↓
 Metrics
-     ↓
+   ↓
 Prometheus → Grafana Dashboard
-     ↓
+   ↓
 HPA scales pods based on CPU
-```
+````
 ## Technology Stack
 
 - Kubernetes
