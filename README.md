@@ -1,115 +1,133 @@
-# OnDemand SRE Reliability Lab
+# OnDemand SRE Labs
 
-Production-style reliability engineering lab used to simulate failure scenarios, validate observability pipelines, and demonstrate incident response patterns.
+Hands-on Site Reliability Engineering experiments using Kubernetes, Prometheus, Grafana and load testing.
 
-This lab environment helps reproduce real-world reliability challenges such as:
-
-- Kubernetes service failures
-- traffic spikes and load testing
-- monitoring and alerting pipelines
-- incident response workflows
+This repository demonstrates real-world reliability engineering practices including observability, load testing and autoscaling.
 
 ---
 
-## Architecture
+# Technology Stack
 
-The lab simulates a production-style system with:
-
-- Kubernetes (k3d clusters)
-- NGINX demo service
-- Prometheus monitoring (planned)
-- Grafana dashboards (planned)
-- Alertmanager alerts (planned)
-- k6 load testing (planned)
-- chaos failure simulation (planned)
-
-![Reliability Lab Architecture](diagrams/reliability-lab-architecture.png)
+- Kubernetes
+- Prometheus
+- Grafana
+- k6 Load Testing
+- Horizontal Pod Autoscaler (HPA)
 
 ---
 
-## Quickstart
+# Lab 1 — Kubernetes Deployment
 
-### Prerequisites
-- kubectl
-- k3d
+Deploy a simple application to Kubernetes.
 
-Create a local cluster:
+### Deploy
 
-```bash
-k3d cluster create sre-lab
-kubectl get nodes
-```
-Deploy the demo app:
-```bash
-kubectl apply -f k8s/demo-app.yaml
-kubectl get pods
-kubectl get svc demo-service
-```
-Test locally (NodePort is fixed to 30007):
-```bash
-curl -i http://localhost:30007
-```
-
-Lab Scenarios
-
-🧪 Lab 1 — Kubernetes Self Healing
-
-This lab demonstrates Kubernetes self-healing behavior.
-
-1. Deploy the demo service:
 ```bash
 kubectl apply -f k8s/demo-app.yaml
 ```
-2. Verify pods:
+Verify
 ```bash
 kubectl get pods
+kubectl get svc
 ```
-3. Simulate a failure (delete a pod):
-```bash
-kubectl delete pod -l app=demo --field-selector=status.phase=Running
-```
-Or delete a specific pod:
-```bash
-kubectl get pods
-kubectl delete pod <pod-name>
-```
-4. Watch the Deployment recreate the pod:
-```bash
-kubectl get pods -w
-```
-Expected outcome:
+This demonstrates:
 
-* One pod is terminated
-* A new pod is created automatically to maintain replicas: 3
-* Service continues to respond (readinessProbe helps ensure traffic goes only to ready pods)
+Kubernetes Deployment
+
+Service exposure
+
+readiness probes
+
+Lab 2 — Observability (Prometheus + Grafana)
+
+Monitor the Kubernetes workload using Prometheus and Grafana.
+
+Metrics observed:
+
+CPU usage
+
+Memory usage
+
+Pod metrics
+
+Namespace utilization
+
+Grafana dashboard provides real-time observability for the deployed application.
+
+Lab 3 — Load Testing with k6
+
+Generate traffic against the Kubernetes service.
+
+Port forward
+```bash
+kubectl port-forward svc/demo-service 8080:80
+```
+Run load test
+```bash
+k6 run load-testing/k6-load-test.js
+```
+This generates sustained traffic against the application and allows us to observe system behavior under load.
+
+Lab 4 — Autoscaling under Load (HPA)
+
+Kubernetes automatically scales the application when CPU usage exceeds the defined threshold.
+
+Create HPA
+```bash
+kubectl autoscale deployment demo-app --cpu=20% --min=2 --max=10
+```
+Observe scaling
+```bash
+kubectl get hpa
+kubectl get pods -l app=demo -w
+```
+Example output:
+```bash
+NAME       REFERENCE             TARGETS         MINPODS   MAXPODS   REPLICAS
+demo-app   Deployment/demo-app   cpu: 500%/20%   2         10        10
+```
+This shows that Kubernetes automatically increased replicas to handle the load.
+Evidence
+Grafana Metrics
+
+HPA Output
 
 Repository Structure
+
 ```text
 ondemand-sre-labs
 │
-├── diagrams
-│   └── reliability-lab-architecture.png
+├─ assets
+│   ├─ autoscaling-grafana.png
+│   └─ hpa-output.png
 │
-├── k8s
-│   └── demo-app.yaml
+├─ k8s
+│   └─ demo-app.yaml
 │
-├── monitoring
+├─ load-testing
+│   └─ k6-load-test.js
 │
-├── load-testing
-│
-├── chaos
-│
-├── README.md
-└── .gitignore
+└─ README.md
 ```
-Purpose
+What This Demonstrates
 
-This repository supports the OnDemand SRE consulting platform by providing reproducible reliability engineering labs and demos.
+This lab shows practical SRE concepts:
 
-Website
+Kubernetes application deployment
 
-https://ondemandsre.com
+Observability with Prometheus and Grafana
 
-License
+Synthetic load generation
+
+Horizontal Pod Autoscaling
+
+System behavior under stress
+
+Author
+
+Emrah Gokce Bayram
+Site Reliability Engineer / Cloud Infrastructure
+
+Licence
 
 MIT
