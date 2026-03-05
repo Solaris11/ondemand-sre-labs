@@ -87,10 +87,11 @@ NAME       REFERENCE             TARGETS         MINPODS   MAXPODS   REPLICAS
 demo-app   Deployment/demo-app   cpu: 500%/20%   2         10        10
 ```
 This shows that Kubernetes automatically increased replicas to handle the load.
-Evidence
-Grafana Metrics
-
-HPA Output
+## Evidence
+### Grafana Metrics
+![Grafana Autoscaling](assets/autoscaling-grafana.png)
+### HPA Output
+![HPA Result](assets/hpa-output.png)
 
 Repository Structure
 
