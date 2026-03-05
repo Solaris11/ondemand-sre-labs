@@ -38,16 +38,17 @@ Create a local cluster:
 ```bash
 k3d cluster create sre-lab
 kubectl get nodes
-
+```
 Deploy the demo app:
-
+```bash
 kubectl apply -f k8s/demo-app.yaml
 kubectl get pods
 kubectl get svc demo-service
-
+```
 Test locally (NodePort is fixed to 30007):
-
+```bash
 curl -i http://localhost:30007
+```
 
 Lab Scenarios
 
@@ -56,25 +57,26 @@ Lab Scenarios
 This lab demonstrates Kubernetes self-healing behavior.
 
 1. Deploy the demo service:
-
+```bash
 kubectl apply -f k8s/demo-app.yaml
-
+```
 2. Verify pods:
-
+```bash
 kubectl get pods
-
+```
 3. Simulate a failure (delete a pod):
-
+```bash
 kubectl delete pod -l app=demo --field-selector=status.phase=Running
-
+```
 Or delete a specific pod:
-
+```bash
 kubectl get pods
 kubectl delete pod <pod-name>
-
+```
 4. Watch the Deployment recreate the pod:
-
+```bash
 kubectl get pods -w
+```
 Expected outcome:
 
 * One pod is terminated
