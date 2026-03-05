@@ -25,7 +25,7 @@ Deploy a simple application to Kubernetes.
 ```bash
 kubectl apply -f k8s/demo-app.yaml
 ```
-Verify
+### Verify
 ```bash
 kubectl get pods
 kubectl get svc
@@ -38,7 +38,7 @@ kubectl get svc
 
 ## Lab 2 — Observability (Prometheus + Grafana)
 
-Monitor the Kubernetes workload using Prometheus and Grafana.
+### Monitor the Kubernetes workload using Prometheus and Grafana.
 
 ## Metrics observed:
 
@@ -50,13 +50,13 @@ Monitor the Kubernetes workload using Prometheus and Grafana.
 
 ## Lab 3 — Load Testing with k6
 
-Generate traffic against the Kubernetes service.
+### Generate traffic against the Kubernetes service.
 
-Port forward
+### Port forward
 ```bash
 kubectl port-forward svc/demo-service 8080:80
 ```
-Run load test
+### Run load test
 ```bash
 k6 run load-testing/k6-load-test.js
 ```
@@ -66,16 +66,16 @@ This generates sustained traffic against the application and allows us to observ
 
 Kubernetes automatically scales the application when CPU usage exceeds the defined threshold.
 
-Create HPA
+### Create HPA
 ```bash
 kubectl autoscale deployment demo-app --cpu=20% --min=2 --max=10
 ```
-Observe scaling
+### Observe scaling
 ```bash
 kubectl get hpa
 kubectl get pods -l app=demo -w
 ```
-Example output:
+### Example output:
 ```bash
 NAME       REFERENCE             TARGETS         MINPODS   MAXPODS   REPLICAS
 demo-app   Deployment/demo-app   cpu: 500%/20%   2         10        10
