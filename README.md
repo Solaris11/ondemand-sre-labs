@@ -1,82 +1,82 @@
 # OnDemand SRE Reliability Lab
 
-Production-style reliability engineering lab used to simulate failure scenarios, test observability pipelines, and demonstrate incident response patterns.
+Production-style reliability engineering lab used to simulate failure scenarios, validate observability pipelines, and demonstrate incident response patterns.
 
-This lab environment is used to reproduce real-world reliability challenges such as:
+This lab environment helps reproduce real-world reliability challenges such as:
 
 - Kubernetes service failures
-- regional failover simulations
 - traffic spikes and load testing
 - monitoring and alerting pipelines
 - incident response workflows
 
-The goal is to demonstrate practical Site Reliability Engineering techniques used to improve system resilience.
-
 ---
 
-# Architecture
+## Architecture
 
-The lab simulates a multi-region production system.
+The lab simulates a production-style system with:
 
-Components include:
-
-- Kubernetes clusters (k3d)
-- NGINX services
-- Prometheus monitoring
-- Grafana dashboards
-- Alertmanager alerts
-- k6 load testing
-- chaos failure simulation
-
-Example architecture:
+- Kubernetes (k3d clusters)
+- NGINX demo service
+- Prometheus monitoring (planned)
+- Grafana dashboards (planned)
+- Alertmanager alerts (planned)
+- k6 load testing (planned)
+- chaos failure simulation (planned)
 
 ![Reliability Lab Architecture](diagrams/reliability-lab-architecture.png)
----
-
-# Lab Scenarios
-
-The lab is used to simulate real reliability incidents such as:
-
-### Pod failure simulation
-
-kubectl delete pod demo-app-xxxx
-
-
-Observability dashboards capture:
-
-- request spikes
-- latency increases
-- error rate changes
 
 ---
 
-### Traffic load simulation
+## Quickstart
 
-k6 run load-test.js
+### Prerequisites
+- kubectl
+- k3d
 
+Create a local cluster:
 
-This generates controlled traffic load to observe system behavior.
+```bash
+k3d cluster create sre-lab
+kubectl get nodes
 
----
+Deploy the demo app:
 
-### Failover experiments
+kubectl apply -f k8s/demo-app.yaml
+kubectl get pods
+kubectl get svc demo-service
 
-Failure drills simulate regional service degradation and recovery patterns.
+Test locally (NodePort is fixed to 30007):
 
-These experiments help test:
+curl -i http://localhost:30007
 
-- alert accuracy
-- system resilience
-- recovery automation
+Lab Scenarios
+🧪 Lab 1 — Kubernetes Self Healing
 
----
+This lab demonstrates Kubernetes self-healing behavior.
 
-# Repository Structure
-
+1. Deploy the demo service:
+kubectl apply -f k8s/demo-app.yaml
+2. Verify pods:
+kubectl get pods
+3. Simulate a failure (delete a pod):
+kubectl delete pod -l app=demo --field-selector=status.phase=Running
+Or delete a specific pod:
+kubectl get pods
+kubectl delete pod <pod-name>
+4. Watch the Deployment recreate the pod:
+kubectl get pods -w
+Expected outcome:
+* One pod is terminated
+* A new pod is created automatically to maintain replicas: 3
+* Service continues to respond (readinessProbe helps ensure traffic goes only to ready pods)
+Repository Structure
 ondemand-sre-labs
 │
+├── diagrams
+│   └── reliability-lab-architecture.png
+│
 ├── k8s
-│ └── demo-app.yaml
+│   └── demo-app.yaml
 │
 ├── monitoring
 │
@@ -84,31 +84,17 @@ ondemand-sre-labs
 │
 ├── chaos
 │
-└── README.md
+├── README.md
+└── .gitignore
 
+Purpose
 
----
+This repository supports the OnDemand SRE consulting platform by providing reproducible reliability engineering labs and demos.
 
-# Purpose
-
-This repository supports the **OnDemand SRE** consulting platform.
-
-It demonstrates practical reliability engineering practices including:
-
-- observability-driven operations
-- incident simulation
-- production failure analysis
-- resilience testing
-
----
-
-# Website
+Website
 
 https://ondemandsre.com
 
----
-
-# License
+License
 
 MIT
-
