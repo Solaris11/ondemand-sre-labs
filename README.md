@@ -134,6 +134,13 @@ This repository demonstrates practical SRE concepts:
 - Horizontal Pod Autoscaling (HPA)
 - System behavior under stress conditions
 
+## Reliability Consulting
+
+If your team needs help improving reliability, observability or Kubernetes architecture, feel free to reach out.
+
+Website
+https://ondemandsre.com
+
 ## Author
 
 **Emrah Gokce Bayram**
