@@ -50,6 +50,7 @@ Test locally (NodePort is fixed to 30007):
 curl -i http://localhost:30007
 
 Lab Scenarios
+
 🧪 Lab 1 — Kubernetes Self Healing
 
 This lab demonstrates Kubernetes self-healing behavior.
