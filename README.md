@@ -10,6 +10,20 @@ This repository demonstrates practical SRE concepts including observability, loa
 ## Architecture
 ![Architecture](diagrams/reliability-lab-architecture.png)
 
+User Traffic
+     ↓
+k6 Load Generator
+     ↓
+Kubernetes Service
+     ↓
+Pods (demo-app)
+     ↓
+Metrics
+     ↓
+Prometheus → Grafana Dashboard
+     ↓
+HPA scales pods based on CPU
+
 ## Technology Stack
 
 - Kubernetes
@@ -111,13 +125,13 @@ ondemand-sre-labs
 ```
 ## What This Demonstrates
 
-This lab shows practical SRE concepts:
+This repository demonstrates practical SRE concepts:
 
 - Kubernetes application deployment
-- Observability with Prometheus and Grafana
-- Synthetic load generation
-- Horizontal Pod Autoscaling
-- System behavior under stress
+- Observability using Prometheus and Grafana
+- Synthetic load generation with k6
+- Horizontal Pod Autoscaling (HPA)
+- System behavior under stress conditions
 
 ## Author
 
